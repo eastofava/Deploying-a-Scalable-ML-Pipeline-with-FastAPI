@@ -1,5 +1,3 @@
-from tkinter import Radiobutton
-import pytest
 import numpy as np
 from ml.model import inference
 from sklearn.ensemble import RandomForestClassifier
@@ -33,7 +31,7 @@ def test_metrics_computation():
     recall, and fbeta as floats
     """
     y = [0, 1, 1, 0]
-    preds= [0, 1, 0, 0]
+    preds = [0, 1, 0, 0]
     p, r, fb = compute_model_metrics(y, preds)
     assert isinstance(p, float)
     assert isinstance(r, float)
