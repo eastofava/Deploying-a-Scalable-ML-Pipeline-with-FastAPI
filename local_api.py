@@ -1,15 +1,14 @@
 import json
-
 import requests
 
-#Sending GET request
+# Sending GET request
 r = requests.get("http://127.0.0.1:8000")
 
-#Printing status code and welcome message
+# Printing status code and welcome message
 print("GET status code:", r.status_code)
 print("GET response:", r.json())
 
-#Preparing data for POST
+# Preparing data for POST
 data = {
     "age": 37,
     "workclass": "Private",

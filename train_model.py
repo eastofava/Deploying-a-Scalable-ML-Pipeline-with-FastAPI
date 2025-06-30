@@ -62,7 +62,7 @@ save_model(encoder, encoder_path)
 # load the model
 model = load_model(
     model_path
-) 
+)
 
 # Running model inferences on test set
 preds = inference(model, X_test)
@@ -79,12 +79,12 @@ for col in cat_features:
     for slicevalue in sorted(test[col].unique()):
         count = test[test[col] == slicevalue].shape[0]
         p, r, fb = performance_on_categorical_slice(
-            test, 
-            col, 
-            slicevalue, 
+            test,
+            col,
+            slicevalue,
             cat_features,
             "salary",
-            encoder, 
+            encoder,
             lb,
             model
             )
