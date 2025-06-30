@@ -1,28 +1,38 @@
+from tkinter import Radiobutton
 import pytest
-# TODO: add necessary import
-
-# TODO: implement the first test. Change the function name and input as needed
-def test_one():
-    """
-    # add description for the first test
-    """
-    # Your code here
-    pass
+import numpy as np
+from ml.model import inference
+from sklearn.ensemble import RandomForestClassifier
+from ml.model import compute_model_metrics, train_model
 
 
-# TODO: implement the second test. Change the function name and input as needed
-def test_two():
+def test_train_model_runs():
     """
-    # add description for the second test
+    Test that train_model runs without errors
     """
-    # Your code here
-    pass
+    X = np.random.rand(10,5)
+    y = np.random.randint(0,2,10)
+    model = train_model(X, y)
+    assert model is not None
 
 
-# TODO: implement the third test. Change the function name and input as needed
-def test_three():
+def test_inference_runs():
     """
-    # add description for the third test
+    Test that inference runs and returns predictions
     """
-    # Your code here
-    pass
+    X = np.random.rand(10,5)
+    y = np.random.randint(0,2,10)
+    model = RandomForestClassifier().fit(X, y)
+    preds = inference(model, X)
+    assert len(preds) == len(y)
+
+def test_metrics_computation():
+    """
+    Test that compute_model_metrics returns precision, recall, and fbeta as floats
+    """
+    y = [0,1,1,0]
+    preds=[0,1,0,0]
+    p, r, fb = compute_model_metrics(y, preds)
+    assert isinstance(p, float)
+    assert isinstance(r, float)
+    assert isinstance(fb, float)
